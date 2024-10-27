@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>catalogo</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" id="title">Golden Age</a> <br> <br>
+        </nav>
+    </header>
+    <main>
+        <table id="tabela">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Quantidade</th>
+                    <th>Preço</th>
+                </tr>
+            </thead>
+            <tbody>
+                &nbsp;
+            </tbody>
+        </table>
+    </main>
+
+    <script>
+
+        function carregarTabela() {
+            // Recupera os dados do localStorage
+            const dados = JSON.parse(localStorage.getItem('dados')) || [];
+            const tabela = document.querySelector('#tabela tbody');
+
+            // Limpa a tabela
+            tabela.innerHTML = '';
+
+            // Preenche a tabela
+            dados.forEach((produto) => {
+                const linha = document.createElement('tr');
+                linha.innerHTML = `
+                    <td>${produto.nomeFilme}</td>
+                    <td>${produto.quantidade}</td>
+                    <td>${produto.preco}</td>
+                `;
+                tabela.appendChild(linha);
+            });
+        }
+
+        // Carrega a tabela ao carregar a página
+        window.onload = carregarTabela;
+    </script>
+
+</body>
+</html>

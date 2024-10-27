@@ -1,0 +1,98 @@
+
+
+header a{
+    position: absolute;
+    margin-left: 500px;
+    margin-top: 5px;
+    padding: 5px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    background-color: red;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+}
+
+body{
+    background-color: rgb(156, 156, 156);
+    margin: 0px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+div{
+    margin: 20px;
+}
+
+div h2{
+    margin: 20px;
+}
+
+
+form label {
+    display: inline-block;
+    width: 100px;
+    text-align: left;
+    margin: 10px;
+    padding-left: 30px;
+
+}
+
+
+form button {
+    background-color: rgb(17, 202, 0);
+    color: white;
+    padding: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+
+}
+
+form button:hover{
+    background-color: rgb(10, 117, 0);
+}
+
+button[type="reset"]{ 
+    margin-left: 190px;
+    background-color: rgb(165, 0, 0);
+}
+
+button[type="reset"]:hover{ 
+    background-color: rgb(109, 0, 0);
+}
+
+
+table {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 20px;
+}
+
+
+table th, table td {
+    background-color: white;
+    border: 1px solid #000000;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: rgb(231, 197, 0);
+    color: rgb(58, 58, 58);
+}
+
+table td a{
+    font-weight: bold;
+    color: rgb(27, 102, 168);
+    text-decoration: none;
+}
+
+table td a:hover{
+    color: green;
+}
+
+table td a:last-child:hover{
+    color: rgb(133, 11, 11);
+}

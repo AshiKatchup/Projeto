@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <main>
+
+        <header>
+            <a href="#" id="logout"> Sair</a>
+        </header>
+        <div>
+            <h2>Cadastro de Filmes</h2>
+            <form id="formFilme">
+                <label for="nomeFilme">Nome filme:</label>
+                <input type="text" id="nomeFilme" name="nomeFilme"><br>
+
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade" name="quantidade"><br>
+
+                <label for="preco">Preço:</label>
+                <input type="text" id="preco" name="preco"><br>
+
+                <button type="reset">Limpar</button>
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+
+        <div>
+            <h2>Filmes Cadastrados</h2>
+            <table id="tabela">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Quantidade</th>
+                        <th>Preço</th>
+                        <th>Editar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    &nbsp;
+                </tbody>
+            </table>
+        </div>
+    </main>
+<script src="script.js"></script>
+</body>
+</html>
