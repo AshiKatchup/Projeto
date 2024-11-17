@@ -1,31 +1,33 @@
-const menu = document.querySelectorAll('nav a');
+const links = document.querySelectorAll('nav a');
 
-menu.forEach(link => {
-    link.addEventListener('click', evento => {
-        const href = link.getAttribute('href');
-
-        //Catalogo funciona normal
-        if (href === "catalogo.html") {
-            return; 
+links.forEach(link => {
+    link.addEventListener('click', function(event) {
+        if (link.getAttribute('href') === '#login') {
+            event.preventDefault(); 
+            const loginDialog = document.getElementById('login');
+            loginDialog.showModal(); 
         }
-
-        evento.preventDefault(); 
-        const alvo = document.querySelector(href);
-
-  
-        if (alvo) {
-            window.scroll({
-                top: alvo.offsetTop - 20,
-                behavior: 'smooth'
+        else if (link.getAttribute('href') === 'catalogo.html') {
+            return; 
+        } else {
+            event.preventDefault(); 
+            
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId); 
+            
+            targetElement.scrollIntoView({
+                behavior: 'smooth', 
+                block: 'start' 
             });
         }
     });
 });
 
 
-//Login
 
-//Janela de login
+
+
+
 const btnLogin = document.getElementById('btnLogin');
 const btnFechar = document.getElementById('btnFechar');
 
@@ -40,7 +42,6 @@ btnFechar.onclick = function(){
 const login = document.getElementById('login');
 const formLogin = document.querySelector('#login form');
 
-//Usuario
 let dadosUsuarios = [
     { nome: "admin", email: "admin@email.com", senha: "admin" },
 
@@ -49,13 +50,11 @@ let dadosUsuarios = [
 formLogin.addEventListener('submit', (evento) => {
     evento.preventDefault();
 
-    //Verificar usuario
     let email = document.getElementById('email').value;
     let senha = document.getElementById('senha').value;
 
     dadosUsuarios.forEach(item =>{
         if(email === item.email && senha === item.senha){
-            // Criando sessões para armazenar informações
             sessionStorage.setItem('usuarioLogado', 'true');
             sessionStorage.setItem('nomeUsuario', item.nome);
 
@@ -64,7 +63,6 @@ formLogin.addEventListener('submit', (evento) => {
     });
     
 
-    //Erro
     let usuarioLogado = sessionStorage.getItem('usuarioLogado');
 
     if(!usuarioLogado){        
@@ -75,6 +73,51 @@ formLogin.addEventListener('submit', (evento) => {
         document.querySelector('#login form').reset();
     }
 });
+
+function trocarImagens(event) {
+    const imagemClicada = event.target;
+
+    const imagemGrande = document.querySelector('.grid img');
+    const imagensPequenas = document.querySelectorAll('.pequena img');
+
+    if (imagemClicada !== imagemGrande) {
+        imagemGrande.style.opacity = 0;
+        imagemClicada.style.opacity = 0;
+
+        setTimeout(() => {
+            const imagemTemp = imagemGrande.src;
+
+            imagemGrande.src = imagemClicada.src;
+            imagemGrande.alt = imagemClicada.alt;
+            imagemGrande.id = imagemClicada.id;
+
+            imagemClicada.src = imagemTemp;
+            imagemClicada.alt = 'nova imagem';
+
+            imagemGrande.style.opacity = 1;
+            imagemClicada.style.opacity = 1;
+        }, 500); 
+    }
+}
+
+document.querySelectorAll('.pequena img').forEach(imagem => {
+    imagem.addEventListener('click', trocarImagens);
+});
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
 
 
 

@@ -15,6 +15,7 @@ header a{
 }
 
 body{
+
     background-color: rgb(156, 156, 156);
     margin: 0px;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -28,6 +29,25 @@ div h2{
     margin: 20px;
 }
 
+main{margin-left: 200px;}
+
+.menuLateral {
+    width: 150px;
+    height: 100vh;
+    background-color: #333;
+    color: #fff;
+    padding: 30px;
+    position: fixed;
+    top: 0; 
+    left: 0; 
+}
+
+.menuLateral  a {
+
+    padding:10px;
+    color: #fff;
+    text-decoration: none;
+}
 
 form label {
     display: inline-block;
@@ -38,6 +58,14 @@ form label {
 
 }
 
+form p.erro{
+    width: 200px;
+    padding: 10px;
+    margin-left: 50px;
+    background-color: rgb(255, 190, 190);
+    color: rgb(86, 2, 2);
+    text-align: center;
+}
 
 form button {
     background-color: rgb(17, 202, 0);

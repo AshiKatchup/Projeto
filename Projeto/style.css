@@ -1,8 +1,19 @@
-body{
+html, body{
     margin: 0px;
     padding: 0px;
+    height: 100%;
+    overflow: auto;
     background-color: #000000;
+    background-image: url('./img/—Pngtree—film\ festival\ black\ atmospheric\ background_1474206.jpg');
+    background-size: cover;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+    scroll-behavior: smooth;
 }
+
+
 
 header{
     background-color: #000000;
@@ -11,7 +22,8 @@ header{
 }
 
 #title{
-    font-size: 40px;
+    font-family: Papyrus;
+    font-size: 60px;
 
 }
 
@@ -36,6 +48,19 @@ a:hover{
     text-align: left;
 }
 
+article{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #424242;
+}
+
+article p {
+
+    padding: 10px;
+    color: white;
+    font-size: 20px;
+}
 
 .coluna_meio {
     width: 50%;  /*Largura*/
@@ -48,7 +73,54 @@ a:hover{
     border-radius: 10px;
 }
 
-.titulo_meio h3{
+.grid{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #424242;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Alinha as imagens ao topo */
+    gap: 15px;
+
+
+}
+
+
+.grid img {
+    margin: 20px;
+    width: 65%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s, filter 0.3s, opacity 1s ease-in-out;;
+}
+
+.grid img.grande {
+
+    height: 300px;  /* Tamanho da imagem grande */
+    width: auto;
+
+}
+
+.pequena {    
+
+    margin: auto;
+    display: flex;
+    flex-direction: column; /* Faz as imagens ficarem empilhadas */
+    gap: 10px;  /* Espaçamento entre as imagens empilhadas */
+    width: 30%;
+    transition: transform 0.3s ease;
+}
+
+
+.grid img:hover {
+    transform: scale(1.02);
+    filter: brightness(0.7);
+}
+
+
+h3{
     width: auto;                /*Largura da caixa*/
     margin-bottom: 10px;             /*Espaço entre titulo de display*/
     padding-left: 15px;
@@ -106,4 +178,27 @@ table th {
 
 }
 
+dialog{
+    background-color: #424242;
+    border-radius: 10px;
+}
 
+form{
+    margin: 10px;
+    background-color: #424242;
+}
+
+form label{
+    margin: 30px;
+    color: #FFD700;
+    font-weight: bold;
+}
+
+button{
+    background-color: #FFD700;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px;
+}

@@ -6,86 +6,74 @@
     <title>Projeto</title>
     <link rel="stylesheet" href="style.css">
     <script src="./script.js" defer></script>
+    <script src="./sug.js" defer></script>
+    <script src="./inscri.js" defer></script>
 </head>
 <body>
     <header>
         <nav>
             <a href="#" id="title">Golden Age</a> <br> <br>
-            <a href="#inicio">INICIO</a>
+            <a href="#des">DESTAQUES</a>
             <a href="#nov">NOVIDADES</a>
             <a href="#pop">POPULARES</a>
-            <a href="#fav">FAVORITOS</a>
             <a href="catalogo.html">CATALOGO</a>
             <a href="#login" id="btnLogin">LOGIN</a>
         </nav>
     </header>
 
     <main>
-
-        
-            <div class="coluna_meio">
-                <div class="titulo_meio">
-                    <h3 id="nov">Novidades</h3>
+        <section class="coluna_meio">
+            <h3 id="des">Destaques</h3>
+            <article class="grid">
+                <img src="./img/deadpool.jpg" alt="deadpool" id="1">
+                <div class="pequena">
+                    <img src="./img/Titanic.jpg" id="2" alt="titanic">
+                    <img src="./img/20224832.jpg" id="3" alt="anel">
+                    <img src="./img/ScaryMovie.jpg" id="4" alt="scary">
                 </div>
-                    <div class="navegar">
-                        <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                        <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                        <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                        <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                        <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                        <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                        <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                        <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                        <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                        <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                        <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                    </div>
-                
-                    <div class="titulo_meio">
-                        <h3 id="pop">Populares</h3>
-                    </div>
-                        <div class="navegar">
-                            <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                            <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                            <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                            <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                            <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                            <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                            <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                            <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                            <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                            <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                            <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                        </div>
+            </article>
 
-                        <div class="titulo_meio">
-                            <h3 id="fav">Favoritos</h3>
-                        </div>
-                            <div class="navegar">
-                                <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                                <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                                <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                                <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                                <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                                <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                                <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                                <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                                <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                                <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                                <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
-                            </div>
-            </div>
-
-        
+            <h3 id="nov">Novidades</h3>
+            <article class="navegar">
+                <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
+                <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
+                <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
 
 
+            </article>
+    
+            <h3 id="pop">Populares</h3>
+            <article class="navegar">
+                <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
+                <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
+                <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
+                <img src="./img/deadpool.jpg" alt="deadpool" id="imagem">
+
+            </article>
+
+            <h3>Sugestões</h3>
+            <article>
+                <p>Qual filme você gostaria que adicionássemos ao nosso catalogo? Nos diga!</p>
+                <form id="formsug">
+                    <label for="sugnome">Nome do Filme:</label><br>
+                    <input type="text" name="sugnome" id="sugnome">
+                    <button type="submit">Sugerir</button>
+                </form>
+                <p>Deseja receber atualizações sobre nosso catalogo? Inscreva aqui o seu e-mail!</p>
+                <form id="formE">
+                    <label for="insemail">Aqui!</label><br>
+                    <input type="email" name="insemail" id="insemail">
+                    <button type="submit">Inscrever</button>
+                </form>
+            </article>
+        </section>
     </main>
 
     <dialog id="login">
         <form>
             <h2>Login</h2>
                 <label for="email"> E-mail:</label>
-                <input type="text" name="email" id="email"><br>
+                <input type="text" name="email" id="email"><br><br>
                 <label for="senha"> Senha: </label>
                 <input type="password" name="senha" id="senha"><br>
                 <button type="button" id="btnFechar">Sair</button>
@@ -97,5 +85,7 @@
         <p>Todos</p>
     </footer>
     <script src="./script.js"></script>
+    <script src="./sug.js"></script>
+    <script src="./inscri.js"></script>
 </body>
 </html>

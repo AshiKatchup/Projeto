@@ -1,13 +1,10 @@
-//Recuperação dos dados
 let dados = JSON.parse(localStorage.getItem('dados')) || [];
 let nomeFilme = document.getElementById('nomeFilme');
 let quantidade = document.getElementById('quantidade');
 let preco = document.getElementById('preco');
 
-//Verifica se a chave "chave" existe na URL para edição
 const key = new URLSearchParams(window.location.search).get('chave');
 
-//Preenche o formulário caso seja uma edição
 if (key) {
     nomeFilme.value = dados[key].nomeFilme;
     quantidade.value = dados[key].quantidade;
@@ -15,21 +12,18 @@ if (key) {
     document.querySelector('#formFilme button[type="submit"]').innerText = "Alterar";
 }
 
-//Resetar o formulário e redirecionar para a página principal
 document.getElementById('formFilme').addEventListener('reset', function (e) {
     e.preventDefault();
     window.location.href = "./admin.html";
 });
 
-//Submissão do formulário
 document.getElementById('formFilme').addEventListener('submit', function (e) {
    e.preventDefault();
 
-
+   removerMensagensErro();
 
     let validade = true;
 
-    //Validações do formulário
     if (!nomeFilme.value) {
         exibirErro('nomeFilme', 'Nome é obrigatório');
         validade = false;
@@ -40,48 +34,67 @@ document.getElementById('formFilme').addEventListener('submit', function (e) {
         validade = false;
     }
 
-    if (!preco.value || isNaN(preco.value)) {
+
+    let precoValidado = validarValorMonetario(preco.value);
+    if (!precoValidado || isNaN(precoValidado)) {
+        console.log(precoValidado);
         exibirErro('preco', 'Preço inválido');
-        validade = false;
+        validado = false;
     }
 
     if (!validade) {
         return;
     }
 
-    //Cria o objeto produto com os valores do formulário
     const produto = {
         nomeFilme: nomeFilme.value,
         quantidade: quantidade.value,
         preco: preco.value
     };
 
-    //Se for uma edição, atualiza o produto, caso contrário, adiciona
     if (key) {
         dados[key] = produto;
     } else {
         dados.push(produto);
     }
 
-    //Salva os dados no localStorage
     localStorage.setItem('dados', JSON.stringify(dados));
 
-    //Verificação de debug para checar o array de dados
     console.log('Dados salvos:', dados);
 
-    //Atualiza a tabela com os novos dados
     atualizarTabela();
 
-    //Redireciona para a página de administração
     window.location.href = "./admin.html";
 });
 
-//Função para atualizar a tabela
+function validarValorMonetario(valor){
+    valor = valor.replaceAll("R", "").replaceAll("$", "").replaceAll(" ", "");
+    if (valor.includes(",")) {
+        valor = valor.replaceAll(".", "");
+        valor = valor.replace(",", ".");
+    }
+    console.log(valor);
+    return Number(valor);
+}
+
+function exibirErro(campoId, mensagem) {
+    const campo = document.getElementById(campoId);
+    const erro = document.createElement('p');
+    erro.classList.add('erro');
+    erro.innerText = mensagem;
+    campo.after(erro);
+}
+
+function removerMensagensErro() {
+    const erros = document.querySelectorAll('.erro');
+    erros.forEach(erro => erro.remove());
+}
+
 function atualizarTabela() {
     const tabela = document.querySelector('#tabela tbody');
     tabela.innerHTML = '';
 
-    //Preenche a tabela
+
     dados.forEach((produto, index) => {
         const linha = document.createElement('tr');
         linha.innerHTML = `
@@ -97,28 +110,43 @@ function atualizarTabela() {
     });
 }
 
-//Função para remover um produto da tabela e do localStorage
 function removerProduto(index) {
-    dados.splice(index, 1); //Remove o produto do array de dados
-    localStorage.setItem('dados', JSON.stringify(dados)); //Atualiza o localStorage
-    atualizarTabela(); //Atualiza a tabela
+    dados.splice(index, 1); 
+    localStorage.setItem('dados', JSON.stringify(dados)); 
+    atualizarTabela(); 
 }
 
-//Inicializa a tabela ao carregar a página
 atualizarTabela();
 
 
-//Verificando usuario
 let login = sessionStorage.getItem('usuarioLogado');
 
 if(!login) window.location.href = "../index.html";
 
 let usuario = sessionStorage.getItem('nomeUsuario');
 
-// Fazendo o logout
 document.getElementById('logout').addEventListener('click', (evento) => {
     evento.preventDefault();
     sessionStorage.removeItem('usuarioLogado');
     sessionStorage.removeItem('nomeUsuario');
     window.location.href = "../index.html";
 });
+
+function atualizarTabela() {
+    const tabela = document.querySelector('#tabela tbody');
+    tabela.innerHTML = '';
+
+    dados.forEach((produto, index) => {
+        const linha = document.createElement('tr');
+        linha.innerHTML = `
+            <td>${produto.nomeFilme}</td>
+            <td>${produto.quantidade}</td>
+            <td>${produto.preco}</td>
+            <td>
+                <a href="?chave=${index}">Editar</a>
+                <a href="#" onclick="removerProduto(${index})">Excluir</a>
+            </td>
+        `;
+        tabela.appendChild(linha);
+    });
+}

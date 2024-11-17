@@ -28,31 +28,7 @@
         </table>
     </main>
 
-    <script>
-
-        function carregarTabela() {
-            // Recupera os dados do localStorage
-            const dados = JSON.parse(localStorage.getItem('dados')) || [];
-            const tabela = document.querySelector('#tabela tbody');
-
-            // Limpa a tabela
-            tabela.innerHTML = '';
-
-            // Preenche a tabela
-            dados.forEach((produto) => {
-                const linha = document.createElement('tr');
-                linha.innerHTML = `
-                    <td>${produto.nomeFilme}</td>
-                    <td>${produto.quantidade}</td>
-                    <td>${produto.preco}</td>
-                `;
-                tabela.appendChild(linha);
-            });
-        }
-
-        // Carrega a tabela ao carregar a página
-        window.onload = carregarTabela;
-    </script>
+    <script src="./catalogo.js"></script>
 
 </body>
 </html>
